@@ -239,3 +239,22 @@ Records: 0  Duplicates: 0  Warnings: 0
 | start        | date         | NO   |     | NULL    |                |
 +--------------+--------------+------+-----+---------+----------------+
 12 rows in set (0.2705 sec)
+ MySQL  localhost:3306 ssl  payroll_service  SQL >INSERT INTO employee_payroll (name, department, gender, basic_pay, deductions, taxable_pay, tax, net_pay, start) VALUES
+						-> ('Krutika', 'Marketting', 'F', 420000.00, 80000.00, 340000.00, 34000.00, 306000.00, '2021-11-14' );
+Query OK, 1 row affected (0.1210 sec)
+ MySQL  localhost:3306 ssl  payroll_service  SQL > update employee_payroll set department = 'sales' where id = 4;
+Query OK, 1 row affected (0.1674 sec)
+
+Rows matched: 1  Changed: 1  Warnings: 0
+ MySQL  localhost:3306 ssl  payroll_service  SQL > SELECT * FROM employee_payroll;
++----+----------+--------------+---------+------------+--------+-----------+------------+-------------+-------+---------+------------+
+| id | name     | phone_number | address | department | gender | basic_pay | deductions | taxable_pay | tax   | net_pay | start      |
++----+----------+--------------+---------+------------+--------+-----------+------------+-------------+-------+---------+------------+
+|  1 | Sameer   | NULL         | NULL    |            | M      |    500000 |          0 |           0 |     0 |       0 | 2021-09-19 |
+|  2 | Abhishek | NULL         | NULL    |            | M      |    480000 |          0 |           0 |     0 |       0 | 2021-10-02 |
+|  3 | Durgesh  | NULL         | NULL    |            | M      |    480000 |          0 |           0 |     0 |       0 | 2021-11-08 |
+|  4 | Krutika  | NULL         | NULL    | sales      | F      |    420000 |          0 |           0 |     0 |       0 | 2021-11-11 |
+|  5 | Gauri    | NULL         | NULL    |            | F      |    360000 |          0 |           0 |     0 |       0 | 2021-11-13 |
+|  6 | Krutika  | NULL         | TBD     | Marketing  | F      |    420000 |      80000 |      340000 | 34000 |  306000 | 2021-11-14 |
++----+----------+--------------+---------+------------+--------+-----------+------------+-------------+-------+---------+------------+
+6 rows in set (0.0007 sec)
