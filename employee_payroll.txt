@@ -70,3 +70,10 @@ Records: 3  Duplicates: 0  Warnings: 0
 |  3 | Durgesh  | 480000 | 2021-11-08 |
 +----+----------+--------+------------+
 3 rows in set (0.0365 sec)
+ MySQL  localhost:3306 ssl  payroll_service  SQL > SELECT salary FROM employee_payroll WHERE name = 'Sameer';
++--------+
+| salary |
++--------+
+| 500000 |
++--------+
+1 row in set (0.6533 sec)
