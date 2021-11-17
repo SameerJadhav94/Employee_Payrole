@@ -258,3 +258,35 @@ Rows matched: 1  Changed: 1  Warnings: 0
 |  6 | Krutika  | NULL         | TBD     | Marketing  | F      |    420000 |      80000 |      340000 | 34000 |  306000 | 2021-11-14 |
 +----+----------+--------------+---------+------------+--------+-----------+------------+-------------+-------+---------+------------+
 6 rows in set (0.0007 sec)
+ MySQL  localhost:3306 ssl  payroll_service  SQL > CREATE TABLE company
+                                                -> ( company_id INT PRIMARY KEY,
+                                                -> company_name VARCHAR(250) NOT NULL);
+Query OK, 0 rows affected (1.4901 sec)
+ MySQL  localhost:3306 ssl  payroll_service  SQL > CREATE TABLE employee
+                                                -> ( id INT unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
+                                                -> company_id INT REFERENCES company(company_id),
+                                                -> name VARCHAR(250) NOT NULL,
+                                                -> phone_number VARCHAR(50) NOT NULL,
+                                                -> address VARCHAR(250) NOT NULL DEFAULT 'DEFAULT',
+                                                -> gender CHAR(1) NOT NULL);
+Query OK, 0 rows affected (2.4599 sec)
+ MySQL  localhost:3306 ssl  payroll_service  SQL > CREATE TABLE payroll (id INT REFERENCES employee(id), basic_pay Double NOT NULL, deductions Double NOT NULL, taxable_pay Double NOT NULL, income_tax Double NOT NULL, net_pay Double NOT NULL);
+Query OK, 0 rows affected (0.3930 sec)
+ MySQL  localhost:3306 ssl  payroll_service  SQL > CREATE TABLE department
+                                                -> (department_id INT PRIMARY KEY NOT NULL, department_name VARCHAR(50) NOT NULL);
+Query OK, 0 rows affected (1.6109 sec)
+ MySQL  localhost:3306 ssl  payroll_service  SQL > CREATE TABLE employee_department
+                                                -> (employee_id INT REFERENCES employee(id), department_id INT REFERENCES department(department_id));
+Query OK, 0 rows affected (0.4916 sec)
+ MySQL  localhost:3306 ssl  payroll_service  SQL > show tables;
++---------------------------+
+| Tables_in_payroll_service |
++---------------------------+
+| company                   |
+| department                |
+| employee                  |
+| employee_department       |
+| employee_payroll          |
+| payroll                   |
++---------------------------+
+6 rows in set (0.0980 sec)
