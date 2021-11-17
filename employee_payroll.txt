@@ -54,3 +54,19 @@ Query OK, 0 rows affected (2.1209 sec)
 | start  | date         | NO   |     | NULL    |                |
 +--------+--------------+------+-----+---------+----------------+
 4 rows in set (0.0615 sec)
+ MySQL  localhost:3306 ssl  payroll_service  SQL > INSERT INTO employee_payroll (name, salary, start) VALUES
+                                                -> ('Sameer', 500000.00, '2021-09-19'),
+                                                -> ('Abhishek', 450000.00, '2021-10-02'),
+                                                -> ('Durgesh', 480000.00, '2021-11-08');
+Query OK, 3 rows affected (1.4095 sec)
+
+Records: 3  Duplicates: 0  Warnings: 0
+ MySQL  localhost:3306 ssl  payroll_service  SQL > select * from employee_payroll;
++----+----------+--------+------------+
+| id | name     | salary | start      |
++----+----------+--------+------------+
+|  1 | Sameer   | 500000 | 2021-09-19 |
+|  2 | Abhishek | 450000 | 2021-10-02 |
+|  3 | Durgesh  | 480000 | 2021-11-08 |
++----+----------+--------+------------+
+3 rows in set (0.0365 sec)
