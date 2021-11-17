@@ -1,0 +1,37 @@
+ MySQL  localhost:3306 ssl  SQL > show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+6 rows in set (0.0011 sec)
+ MySQL  localhost:3306 ssl  SQL > CREATE DATABASE payroll_service;
+Query OK, 1 row affected (0.2472 sec)
+ MySQL  localhost:3306 ssl  SQL > show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| payroll_service    |
+| performance_schema |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+7 rows in set (0.0443 sec)
+ MySQL  localhost:3306 ssl  SQL > use payroll_service;
+Default schema set to `payroll_service`.
+Fetching table and column names from `payroll_service` for auto-completion... Press ^C to stop.
+ MySQL  localhost:3306 ssl  payroll_service  SQL > SELECT DATABASE();
++-----------------+
+| DATABASE()      |
++-----------------+
+| payroll_service |
++-----------------+
+1 row in set (0.0007 sec)
