@@ -86,3 +86,45 @@ Records: 3  Duplicates: 0  Warnings: 0
 |  3 | Durgesh  | 480000 | 2021-11-08 |
 +----+----------+--------+------------+
 2 rows in set (0.0009 sec)
+ MySQL  localhost:3306 ssl  payroll_service  SQL > ALTER TABLE employee_payroll ADD gender CHAR(1) AFTER name;
+Query OK, 0 rows affected (2.3865 sec)
+
+Records: 0  Duplicates: 0  Warnings: 0
+ MySQL  localhost:3306 ssl  payroll_service  SQL > describe employee_payroll;
++--------+--------------+------+-----+---------+----------------+
+| Field  | Type         | Null | Key | Default | Extra          |
++--------+--------------+------+-----+---------+----------------+
+| id     | int unsigned | NO   | PRI | NULL    | auto_increment |
+| name   | varchar(150) | NO   |     | NULL    |                |
+| gender | char(1)      | YES  |     | NULL    |                |
+| salary | double       | NO   |     | NULL    |                |
+| start  | date         | NO   |     | NULL    |                |
++--------+--------------+------+-----+---------+----------------+
+5 rows in set (0.0016 sec)
+ MySQL  localhost:3306 ssl  payroll_service  SQL > update employee_payroll set gender = 'M' where name = 'Sameer';
+Query OK, 1 row affected (0.0779 sec)
+
+Rows matched: 1  Changed: 1  Warnings: 0
+ MySQL  localhost:3306 ssl  payroll_service  SQL > SELECT * FROM employee_payroll;
++----+----------+--------+--------+------------+
+| id | name     | gender | salary | start      |
++----+----------+--------+--------+------------+
+|  1 | Sameer   | M      | 500000 | 2021-09-19 |
+|  2 | Abhishek | NULL   | 450000 | 2021-10-02 |
+|  3 | Durgesh  | NULL   | 480000 | 2021-11-08 |
++----+----------+--------+--------+------------+
+3 rows in set (0.0009 sec)
+ MySQL  localhost:3306 ssl  payroll_service  SQL > update employee_payroll set gender = 'M' where name = 'Durgesh' or name = 'Abhishek';
+Query OK, 2 rows affected (0.0634 sec)
+
+Rows matched: 2  Changed: 2  Warnings: 0
+ MySQL  localhost:3306 ssl  payroll_service  SQL > SELECT * FROM employee_payroll;
++----+----------+--------+--------+------------+
+| id | name     | gender | salary | start      |
++----+----------+--------+--------+------------+
+|  1 | Sameer   | M      | 500000 | 2021-09-19 |
+|  2 | Abhishek | M      | 450000 | 2021-10-02 |
+|  3 | Durgesh  | M      | 480000 | 2021-11-08 |
++----+----------+--------+--------+------------+
+3 rows in set (0.0157 sec)
+
