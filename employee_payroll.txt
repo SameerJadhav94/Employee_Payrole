@@ -127,4 +127,54 @@ Rows matched: 2  Changed: 2  Warnings: 0
 |  3 | Durgesh  | M      | 480000 | 2021-11-08 |
 +----+----------+--------+--------+------------+
 3 rows in set (0.0157 sec)
+ MySQL  localhost:3306 ssl  payroll_service  SQL > update employee_payroll set salary = 480000.00 where name = 'Abhishek';
+Query OK, 1 row affected (0.0994 sec)
+ MySQL  localhost:3306 ssl  payroll_service  SQL > INSERT INTO employee_payroll(name, gender, salary, start) VALUES
+                                                -> ('Krutika', 'F', 420000.00, '2021-11-11'),
+                                                -> ('Gauri', 'F', 360000.00, '2021-11-13');
+Query OK, 2 rows affected (0.1210 sec)
+
+Records: 2  Duplicates: 0  Warnings: 0
+ MySQL  localhost:3306 ssl  payroll_service  SQL > SELECT * FROM employee_payroll;
++----+----------+--------+--------+------------+
+| id | name     | gender | salary | start      |
++----+----------+--------+--------+------------+
+|  1 | Sameer   | M      | 500000 | 2021-09-19 |
+|  2 | Abhishek | M      | 480000 | 2021-10-02 |
+|  3 | Durgesh  | M      | 480000 | 2021-11-08 |
+|  4 | Krutika  | F      | 420000 | 2021-11-11 |
+|  5 | Gauri    | F      | 360000 | 2021-11-13 |
++----+----------+--------+--------+------------+
+5 rows in set (0.2267 sec)
+ MySQL  localhost:3306 ssl  payroll_service  SQL > SELECT AVG(salary) FROM employee_payroll WHERE gender = 'M' GROUP BY gender;
++-------------------+
+| AVG(salary)       |
++-------------------+
+| 486666.6666666667 |
++-------------------+
+1 row in set (0.3340 sec)
+ MySQL  localhost:3306 ssl  payroll_service  SQL > SELECT gender,  AVG(salary) FROM employee_payroll GROUP BY gender;
++--------+-------------------+
+| gender | AVG(salary)       |
++--------+-------------------+
+| M      | 486666.6666666667 |
+| F      |            390000 |
++--------+-------------------+
+2 rows in set (0.0016 sec)
+ MySQL  localhost:3306 ssl  payroll_service  SQL > SELECT gender,  COUNT(name) FROM employee_payroll GROUP BY gender;
++--------+-------------+
+| gender | COUNT(name) |
++--------+-------------+
+| M      |           3 |
+| F      |           2 |
++--------+-------------+
+2 rows in set (0.0359 sec)
+ MySQL  localhost:3306 ssl  payroll_service  SQL > SELECT gender, SUM(salary) FROM employee_payroll GROUP BY gender;
++--------+-------------+
+| gender | SUM(salary) |
++--------+-------------+
+| M      |     1460000 |
+| F      |      780000 |
++--------+-------------+
+2 rows in set (0.0018 sec)
 
